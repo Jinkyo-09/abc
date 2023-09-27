@@ -15,7 +15,7 @@ button.addEventListener('click', () => {
 					right,
 					{ height: '100%' },
 					{
-						duration: 1000,
+						duration: 800,
 						callback: () => {
 							new Anime(
 								bottom,
@@ -23,7 +23,7 @@ button.addEventListener('click', () => {
 								{
 									duration: 1000,
 									callback: () => {
-										new Anime(left, { height: '100%' }, { duration: 1000 });
+										new Anime(left, { height: '100%' }, { duration: 800 });
 									},
 								}
 							);
