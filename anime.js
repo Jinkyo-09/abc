@@ -76,7 +76,12 @@ class Anime {
 		};
 
 		Object.keys(easingPresets).map((key) => this.easeType === key && (easingProgress = BezierEasing(...easingPresets[key])(progress)));
-		return [progress, this.isBg ? currentValue.map((curVal, idx) => curVal + (value[idx] - curVal) * easingProgress) : currentValue + (value - currentValue) * easingProgress];
+		return [
+			progress,
+			this.isBg
+				? currentValue.map((curVal, idx) => curVal + (value[idx] - curVal) * easingProgress)
+				: currentValue + (value - currentValue) * easingProgress,
+		];
 	}
 
 	//type에 따라서 넘어온 result값을 실제 DOM의 스타일 객체에 연결
