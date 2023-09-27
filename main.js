@@ -20,14 +20,14 @@ window.addEventListener('scroll', () => {
 	})`;
 	h1.style.opacity = 1 - scroll / 600;
 
-	if (scroll >= secs[1].offsetTop + baseLine) {
-		h1_2.style.transform = `translateX(${scroll_2}px) rotate(${scroll_2}deg) scale(${
-			1 + scroll_2 / 200
-		})`;
-	} else {
-		//원래위치로 스크롤시 조금씩 오차범위가 발생하기 때문에 원래값으로 강제 보정 처리
-		h1_2.style.transform = `translateX(${initScroll}px) rotate(${initScroll}deg) scale(${
-			1 + initScroll / 200
-		})`;
-	}
+	let Scroll_2 = 0;
+
+	scroll >= secs[1].offsetTop + baseLine
+		? scroll >= secs[1].offsetTop + baseLine
+		: (scroll_2 = 0);
+
+	h1_2.style.transform = `translateX(${scroll_2}px) rotate(${scroll_2}deg) scale(${
+		1 + scroll_2 / 200
+	})`;
+	h1_2.style.opacity = 1 - scroll_2 / 400;
 });
