@@ -4,10 +4,9 @@
  */
 
 const secs = document.querySelectorAll('section');
+const h1 = secs[0].querySelector('h1');
 
 window.addEventListener('scroll', () => {
 	const scroll = window.scrollY;
-	const pos1 = secs[0].offsetTop;
-	console.log('scroll', scroll);
-	console.log('pos1', pos1);
+	h1.style.transform = `translateX(${scroll}px) rotate(${scroll}deg)`;
 });
