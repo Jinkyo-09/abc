@@ -14,12 +14,48 @@ a {
   text-decoration: none;
 }
 
-article {
-  width: 100px;
-  height: 100px;
-  background-color: #add8e6;
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body main {
+  width: 80vw;
+  height: 50vh;
+  position: relative;
+}
+body main .top {
+  width: 0%;
+  height: 1px;
+  background-color: #000;
   position: absolute;
   top: 0;
+  left: 0;
+}
+body main .right {
+  width: 1px;
+  height: 0%;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+body main .bottom {
+  width: 0%;
+  height: 1px;
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+body main .left {
+  width: 1px;
+  height: 0%;
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
   left: 0;
 }
 
