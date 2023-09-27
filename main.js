@@ -1,29 +1,43 @@
-const button = document.querySelector('.open');
-const top = document.querySelector('.top');
-const left = document.querySelector('.left');
-const right = document.querySelector('.right');
-const bottom = document.querySelector('.bottom');
+const main = document.querySelector('main');
+const [top, right, bottom, left, open] = main.children;
+const content = document.querySelector('.content');
+const close = document.querySelector('.close');
+const speed = 500;
+const speed2 = 250;
+const h2 = content.querySelector('h2');
 
-button.addEventListener('click', () => {
+splitText(h2, 0.1, 1);
+
+open.addEventListener('click', () => {
 	new Anime(
 		top,
 		{ width: '100%' },
 		{
-			duration: 1000,
+			duration: speed,
 			callback: () => {
 				new Anime(
 					right,
 					{ height: '100%' },
 					{
-						duration: 800,
+						duration: speed2,
 						callback: () => {
 							new Anime(
 								bottom,
 								{ width: '100%' },
 								{
-									duration: 1000,
+									duration: speed,
 									callback: () => {
-										new Anime(left, { height: '100%' }, { duration: 800 });
+										new Anime(
+											left,
+											{ height: '100%' },
+											{
+												duration: speed2,
+												callback: () => {
+													content.classList.add('on');
+													open.classList.add('off');
+												},
+											}
+										);
 									},
 								}
 							);
@@ -34,3 +48,30 @@ button.addEventListener('click', () => {
 		}
 	);
 });
+
+close.addEventListener('click', () => {
+	content.classList.remove('on');
+
+	setTimeout(() => {
+		new Anime(top, { width: '0%' });
+		new Anime(bottom, { width: '0%' });
+		new Anime(left, { height: '0%' });
+		new Anime(right, { height: '0%' });
+		open.classList.remove('off');
+	}, 1000);
+});
+
+function splitText(selector, interval, delay) {
+	let count = 0;
+	const txt = selector.innerText;
+	selector.innerHTML = '';
+
+	for (const el of txt) {
+		const span = document.createElement('span');
+		span.innerText = el;
+		span.style.transitionDelay = `${interval * count + delay}s`;
+		span.style.display = 'inline-block';
+		selector.append(span);
+		count++;
+	}
+}

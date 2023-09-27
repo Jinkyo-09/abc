@@ -11,10 +11,11 @@ body {
 		width: 80vw;
 		height: 50vh;
 		position: relative;
+		perspective: 1400px;
 
 		.top {
 			width: 0%;
-			height: 1px;
+			height: 2px;
 			background-color: #000;
 			position: absolute;
 			top: 0;
@@ -22,7 +23,7 @@ body {
 		}
 
 		.right {
-			width: 1px;
+			width: 2px;
 			height: 0%;
 			background-color: #000;
 			position: absolute;
@@ -32,7 +33,7 @@ body {
 
 		.bottom {
 			width: 0%;
-			height: 1px;
+			height: 2px;
 			background-color: #000;
 			position: absolute;
 			bottom: 0;
@@ -40,7 +41,7 @@ body {
 		}
 
 		.left {
-			width: 1px;
+			width: 2px;
 			height: 0%;
 			background-color: #000;
 			position: absolute;
@@ -66,6 +67,75 @@ body {
 
 			&:hover {
 				background: hotpink;
+			}
+
+			&.off {
+				opacity: 0;
+			}
+		}
+		.content {
+			width: 100%;
+			height: 100%;
+			padding: 100px;
+			background: #111;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			z-index: -1;
+			transform: rotateY(220deg);
+			transition: opacity 1s, transform 1s;
+
+			h2 {
+				font: bold 50px/1 'arial';
+				color: #fff;
+				margin-bottom: 20px;
+
+				span {
+					opacity: 0;
+					transform: scale(2);
+					transition-duration: 1s;
+				}
+			}
+
+			p {
+				width: 80%;
+				font: 16px/1.2 'airal';
+				color: #ddd;
+				opacity: 0;
+				transform: translateX(300deg);
+				margin-bottom: 30px;
+				transition: 1s 1.5s;
+			}
+
+			.close {
+				width: 120px;
+				height: 40px;
+				background: #fff;
+				font: bold 16px/40px 'arial';
+				color: #333;
+				cursor: pointer;
+				transition: 1s 2s;
+				opacity: 0;
+				transform: translateX(300px);
+			}
+
+			&.on {
+				opacity: 1;
+				transform: translateX(0px);
+
+				p,
+				.close {
+					opacity: 1;
+					transform: translateX(0px);
+				}
+
+				h2 {
+					span {
+						opacity: 1;
+						transform: scale(1);
+					}
+				}
 			}
 		}
 	}
